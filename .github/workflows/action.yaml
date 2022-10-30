@@ -1,4 +1,4 @@
-name: parse-dont-validate-ci-cd
+name: node-package-helper-ci-cd
 
 on: [push, pull_request]
 
