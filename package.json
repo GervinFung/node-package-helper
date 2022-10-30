@@ -1,0 +1,32 @@
+{
+    "name": "node-package-helper",
+    "description": "My helper to ensure TypeScript transpiled files/folders are valid according to my preference",
+    "version": "0.0.0",
+    "license": "MIT",
+    "type": "module",
+    "main": "build/index.js",
+    "types": "build/index.d.ts",
+    "scripts": {
+        "installation": "pnpm i --frozen-lockfile",
+        "postinstall": "pnpm build",
+        "lint": "eslint src/ test/ -f='stylish' --color",
+        "format": "prettier --ignore-path .gitignore --write src/ test/",
+        "format-check": "prettier --ignore-path .gitignore --check src/ test/",
+        "build": "rm -rf build && tsc -p tsconfig.build.json && pnpm postbuild",
+        "postbuild": "ts-add-js-extension add --dir=build && chmod +x build/bin.js",
+        "test": "vitest"
+    },
+    "devDependencies": {
+        "@types/node": "^18.11.7",
+        "@typescript-eslint/eslint-plugin": "^5.41.0",
+        "@typescript-eslint/parser": "^5.41.0",
+        "cases-of-test": "^0.1.0",
+        "eslint": "^8.26.0",
+        "prettier": "^2.7.1",
+        "typescript": "^4.8.4",
+        "vitest": "^0.24.3"
+    },
+    "dependencies": {
+        "ts-add-js-extension": "^1.3.2"
+    }
+}

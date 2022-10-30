@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "include": ["src"],
+    "compilerOptions": {
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "module": "ESNEXT",
+        "outDir": "build",
+        "target": "ESNEXT"
+    }
+}
