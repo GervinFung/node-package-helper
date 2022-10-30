@@ -47,21 +47,16 @@ const tallyTranspiledFiles = () => {
         )
     );
 
-    const packageJson = 'package.json';
-
     return {
         transpiledOutDirs,
         isTypeScriptDeclarationOnly: () =>
             dts.every((file) => file.endsWith('.d.ts')),
         isJavaScriptAndSourceMapOnly: () =>
-            mjs.filter((file) => file.endsWith(packageJson)).length === 1 &&
-            mjs
-                .filter((file) => !file.endsWith(packageJson))
-                .every(
-                    (file, index) =>
-                        cjs[index] === file &&
-                        (file.endsWith('.js') || file.endsWith('.js.map'))
-                ),
+            mjs.every(
+                (file, index) =>
+                    cjs[index] === file &&
+                    (file.endsWith('.js') || file.endsWith('.js.map'))
+            ),
     };
 };
 
