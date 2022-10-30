@@ -3,5 +3,5 @@ import testGeneratePackage from './generate-package-json';
 import testTallyTranspiledFiles from './tally-transpiled-files';
 
 testCases({
-    tests: [[testGeneratePackage], [testTallyTranspiledFiles]],
+    tests: [[testTallyTranspiledFiles], [testGeneratePackage]],
 });
