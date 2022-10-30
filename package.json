@@ -1,7 +1,7 @@
 {
     "name": "node-package-helper",
     "description": "My helper to ensure TypeScript transpiled files/folders are valid according to my preference",
-    "version": "0.0.0",
+    "version": "0.0.2",
     "license": "MIT",
     "type": "module",
     "main": "build/index.js",
