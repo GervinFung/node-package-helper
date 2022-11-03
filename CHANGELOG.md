@@ -1,3 +1,7 @@
+## 0.1.2 (3 Nov 2022)
+
+-   (Feat) Added `--skip-outdir` args to skip some transpiled outdir
+
 ## 0.0.2 (30 Oct 2022)
 
 -   (Fix) Remove check for `package.json` in tallying JavaScrpt/Sourcemap
