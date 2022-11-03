@@ -18,7 +18,8 @@
         "build": "rm -rf build && tsc -p tsconfig.build.json && pnpm postbuild",
         "postbuild": "ts-add-js-extension add --dir=build && chmod +x build/bin.js",
         "pretest": "cd test/dummy && rm cjs/package.json mjs/package.json",
-        "test": "pnpm pretest && vitest"
+        "test": "pnpm pretest && vitest && pnpm posttest",
+        "posttest": "pnpm format"
     },
     "dependencies": {
         "ts-add-js-extension": "^1.3.2",
