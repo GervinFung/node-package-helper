@@ -1,10 +1,10 @@
 import fs from 'fs';
 import getDir from './dir';
-import tallyTranspiledFiles from './tally-transpiled-files';
+import TallyTranspiledFiles from './tally-transpiled-files';
 
 const generate = async (
     outDir: Exclude<
-        ReturnType<typeof tallyTranspiledFiles>['transpiledOutDirs'][number],
+        typeof TallyTranspiledFiles['transpiledOutDirs'][number],
         'dts'
     >
 ) =>
@@ -18,7 +18,7 @@ const generate = async (
             (error) =>
                 error
                     ? reject(error)
-                    : resolve(`${type} package.json generated`)
+                    : resolve(`generated package.json for ${type}`)
         );
     });
 
