@@ -1,7 +1,7 @@
 {
     "name": "node-package-helper",
     "description": "My helper to ensure TypeScript transpiled files/folders are valid according to my preference",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "license": "MIT",
     "type": "module",
     "main": "build/index.js",
@@ -18,7 +18,8 @@
         "build": "rm -rf build && tsc -p tsconfig.build.json && pnpm postbuild",
         "postbuild": "ts-add-js-extension add --dir=build && chmod +x build/bin.js",
         "pretest": "cd test/dummy && rm cjs/package.json mjs/package.json",
-        "test": "pnpm pretest && vitest"
+        "test": "pnpm pretest && vitest && pnpm posttest",
+        "posttest": "pnpm format"
     },
     "dependencies": {
         "ts-add-js-extension": "^1.3.2",

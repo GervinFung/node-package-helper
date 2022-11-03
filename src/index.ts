@@ -1,19 +1,33 @@
+import parseArgs from './args-process';
 import generatePackageJsonForTranspiledJavaScript from './generate-package-json';
-import tallyTranspiledFiles from './tally-transpiled-files';
+import TallyTranspiledFiles from './tally-transpiled-files';
 
-const main = () => {
-    const tallier = tallyTranspiledFiles();
-    if (!tallier.isTypeScriptDeclarationOnly()) {
+const main = (
+    params?: Readonly<{
+        parseArgs: Parameters<typeof parseArgs>[number];
+    }>
+) => {
+    const args = parseArgs(params?.parseArgs ?? []);
+
+    const tallier = TallyTranspiledFiles.tallyTranspiledFiles();
+
+    if (
+        !args.skipOutDir.includes('dts') &&
+        !tallier.isTypeScriptDeclarationOnly()
+    ) {
         throw new Error(
             'dts folder contains non TypeScript type definition files'
         );
     }
-    if (!tallier.isJavaScriptAndSourceMapOnly()) {
+
+    if (!tallier.isJavaScriptOnly()) {
         throw new Error(
             'mjs/cjs folder contains non JavaScrpt and Sourcemap files'
         );
     }
+
     const generator = generatePackageJsonForTranspiledJavaScript();
+
     generator.mjs();
     generator.cjs();
 };
