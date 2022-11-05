@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@poolofdeath20/eslint-config': ^0.0.1
   '@types/node': ^18.11.7
   '@typescript-eslint/eslint-plugin': ^5.41.0
   '@typescript-eslint/parser': ^5.41.0
@@ -16,6 +17,7 @@ dependencies:
   typescript: 4.8.4
 
 devDependencies:
+  '@poolofdeath20/eslint-config': 0.0.1_vaxml6wlqqqzqualign7ukdjzm
   '@types/node': 18.11.7
   '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
   '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
@@ -98,6 +100,21 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
+
+  /@poolofdeath20/eslint-config/0.0.1_vaxml6wlqqqzqualign7ukdjzm:
+    resolution: {integrity: sha512-d/3M2sX5aDmcxEz6z894VMXEkLbJ36QTEJiLdFI3icM9XVmj0iqfr4pZKDFJj143qEFtLxU/pnr/P9yhbLcLiA==}
+    peerDependencies:
+      '@typescript-eslint/eslint-plugin': '*'
+      '@typescript-eslint/parser': '*'
+      eslint: '>=8'
+      eslint-plugin-jsx-a11y: '*'
+      eslint-plugin-react: '*'
+      eslint-plugin-styled-components-a11y: '*'
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
+      '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
+      eslint: 8.26.0
+    dev: true
 
   /@types/chai-subset/1.3.3:
     resolution: {integrity: sha512-frBecisrNGz+F4T6bcc+NLeolfiojh5FxW2klu669+8BARtyQv2C/GkNW6FUodVe4BroGMP/wER/YDGc7rEllw==}
