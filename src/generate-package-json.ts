@@ -3,18 +3,19 @@ import getDir from './dir';
 import TallyTranspiledFiles from './tally-transpiled-files';
 
 const generate = async (
-    outDir: Exclude<
-        typeof TallyTranspiledFiles['transpiledOutDirs'][number],
-        'dts'
-    >
+    outDir: (typeof TallyTranspiledFiles)['transpiledOutDirs'][number]
 ) =>
     new Promise<string | NodeJS.ErrnoException>((resolve, reject) => {
         const type = outDir === 'mjs' ? 'module' : 'commonjs';
         fs.writeFile(
             `${getDir()}/${outDir}/package.json`,
-            JSON.stringify({
-                type,
-            }),
+            JSON.stringify(
+                {
+                    type,
+                },
+                undefined,
+                4
+            ),
             (error) =>
                 error
                     ? reject(error)

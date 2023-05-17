@@ -29,20 +29,14 @@ const getBuild = <T extends string>(subDir: T) => {
 };
 
 namespace TallyTranspiledFiles {
-    export const transpiledOutDirs = ['dts', 'mjs', 'cjs'] as const;
+    export const transpiledOutDirs = ['mjs', 'cjs'] as const;
 
     export const tallyTranspiledFiles = () => {
         const dir = getDir();
 
         return {
-            isTypeScriptDeclarationOnly: () => {
-                const [dts] = transpiledOutDirs;
-                return getBuild(dts)
-                    .map((file) => file.replace(`${dir}/${dts}`, ''))
-                    .every((file) => file.endsWith('.d.ts'));
-            },
-            isJavaScriptOnly: () => {
-                const [, mjs, cjs] = transpiledOutDirs;
+            isJsAndDts: () => {
+                const [mjs, cjs] = transpiledOutDirs;
                 const [mjses, cjses] = [mjs, cjs].map((type) =>
                     getBuild(type).map((file) =>
                         file.replace(`${dir}/${type}`, '')
@@ -50,9 +44,10 @@ namespace TallyTranspiledFiles {
                 );
                 return (mjses ?? []).every(
                     (file, index) =>
-                        ((cjses ?? [])[index] === file &&
+                        ((cjses ?? []).at(index) === file &&
                             file.endsWith('.js')) ||
-                        file.endsWith('.js.map')
+                        file.endsWith('.js.map') ||
+                        file.endsWith('.d.ts')
                 );
             },
         };
