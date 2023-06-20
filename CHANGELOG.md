@@ -1,3 +1,7 @@
+## 0.1.3 (20 Jun 2023)
+
+-   (Fix) Use `shx` to run Unix command in Windows
+
 ## 0.1.2 (3 Nov 2022)
 
 -   (Feat) Added `--skip-outdir` args to skip some transpiled outdir
