@@ -7,7 +7,6 @@
     "main": "build/index.js",
     "types": "build/index.d.ts",
     "scripts": {
-        "installation": "pnpm i --frozen-lockfile",
         "postinstall": "pnpm build",
         "lint": "eslint src/ test/ -f='stylish' --color",
         "format": "prettier --ignore-path .gitignore --write src/ test/",

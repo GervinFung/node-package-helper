@@ -4,10 +4,12 @@ on: [push, pull_request]
 
 jobs:
     all:
-        runs-on: ubuntu-latest
+        runs-on: ${{ matrix.os }}
+
         strategy:
             fail-fast: false
             matrix:
+                os: [ubuntu-latest, windows-latest]
                 threads:
                     - '4'
         steps:
@@ -20,7 +22,7 @@ jobs:
                   npm i --location=global pnpm
 
             - name: Install Depedencies
-              run: pnpm installation
+              run: pnpm i
 
             - name: Run Linter
               run: pnpm lint
