@@ -1,37 +1,36 @@
 {
     "name": "node-package-helper",
     "description": "My helper to ensure TypeScript transpiled files/folders are valid according to my preference",
-    "version": "0.1.0",
+    "version": "0.1.3",
     "license": "MIT",
     "type": "module",
     "main": "build/index.js",
     "types": "build/index.d.ts",
-    "bin": {
-        "node-package-helper": "build/bin.js"
-    },
     "scripts": {
-        "installation": "pnpm i --frozen-lockfile",
         "postinstall": "pnpm build",
-        "lint": "eslint src/ test/ -f='stylish' --color",
-        "format": "prettier --ignore-path .gitignore --write src/ test/",
-        "format-check": "prettier --ignore-path .gitignore --check src/ test/",
-        "build": "rm -rf build && tsc -p tsconfig.build.json && pnpm postbuild",
-        "postbuild": "ts-add-js-extension add --dir=build && chmod +x build/bin.js",
-        "pretest": "cd test/dummy && rm cjs/package.json mjs/package.json",
+        "lint": "pnpm vite-node script/lint.ts",
+        "format": "prettier --ignore-path .gitignore --write src test",
+        "format-check": "prettier --ignore-path .gitignore --check src test",
+        "build": "shx rm -rf build && tsc -p tsconfig.build.json && pnpm postbuild",
+        "postbuild": "ts-add-js-extension add --dir=build && shx chmod +x build/bin.js",
+        "pretest": "cd test/dummy && shx rm cjs/package.json mjs/package.json",
         "test": "pnpm pretest && vitest && pnpm posttest",
         "posttest": "pnpm format"
     },
     "dependencies": {
+        "shx": "^0.3.4",
         "ts-add-js-extension": "^1.3.4",
         "typescript": "^5.0.4"
     },
     "devDependencies": {
         "@poolofdeath20/eslint-config": "^0.1.0",
+        "@types/eslint": "^8.40.2",
         "@types/node": "^20.1.7",
         "@typescript-eslint/eslint-plugin": "^5.59.6",
         "@typescript-eslint/parser": "^5.59.6",
         "eslint": "^8.40.0",
         "prettier": "^2.8.8",
+        "vite-node": "^0.32.2",
         "vitest": "^0.31.0"
     }
 }
