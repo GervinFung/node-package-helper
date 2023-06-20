@@ -1,7 +1,7 @@
 import generatePackageJsonForTranspiledJavaScript from './generate-package-json';
 import TallyTranspiledFiles from './tally-transpiled-files';
 
-const main = () => {
+const nodePackageHelper = () => {
     const tallier = TallyTranspiledFiles.tallyTranspiledFiles();
 
     if (!tallier.isJsAndDts()) {
@@ -16,4 +16,4 @@ const main = () => {
     generator.cjs();
 };
 
-export default main;
+export default nodePackageHelper;
