@@ -6,6 +6,9 @@
     "type": "module",
     "main": "build/index.js",
     "types": "build/index.d.ts",
+    "bin": {
+        "node-package-helper": "./build/bin.js"
+    },
     "scripts": {
         "postinstall": "pnpm build",
         "lint": "pnpm vite-node script/lint.ts",

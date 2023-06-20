@@ -39,7 +39,7 @@ namespace TallyTranspiledFiles {
                 const [mjs, cjs] = transpiledOutDirs;
                 const [mjses, cjses] = [mjs, cjs].map((type) =>
                     getBuild(type).map((file) =>
-                        file.replace(path.join(`${dir}/${type}`), '')
+                        file.replace(path.join(dir, type), '')
                     )
                 );
                 return (mjses ?? []).every(
