@@ -1,3 +1,7 @@
+## 0.1.4 (20 Jun 2023)
+
+-   (Fix) Include `bin` back as executable
+
 ## 0.1.3 (20 Jun 2023)
 
 -   (Fix) Use `shx` to run Unix command in Windows
