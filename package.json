@@ -9,9 +9,9 @@
     "scripts": {
         "installation": "pnpm i --frozen-lockfile",
         "postinstall": "pnpm build",
-        "lint": "eslint src/ test/ script/ -f='stylish' --color",
-        "format": "prettier --ignore-path .gitignore --write src/ test/ script/ ",
-        "format-check": "prettier --ignore-path .gitignore --check src/ test/ script/ ",
+        "lint": "eslint src/ test/ -f='stylish' --color",
+        "format": "prettier --ignore-path .gitignore --write src/ test/",
+        "format-check": "prettier --ignore-path .gitignore --check src/ test/",
         "build": "shx rm -rf build && tsc -p tsconfig.build.json && pnpm postbuild",
         "postbuild": "ts-add-js-extension add --dir=build",
         "pretest": "cd test/dummy && rm cjs/package.json mjs/package.json",
