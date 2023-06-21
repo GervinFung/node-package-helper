@@ -1,13 +1,17 @@
 import fs from 'fs';
 import path from 'path';
-import getDir from './dir';
 import { transpiledOutDirs } from './tally-transpiled-files';
 
-const generate = async (outDir: (typeof transpiledOutDirs)[number]) =>
+const generate = async (
+    params: Readonly<{
+        dir: string;
+        outDir: (typeof transpiledOutDirs)[number];
+    }>
+) =>
     new Promise<string | NodeJS.ErrnoException>((resolve, reject) => {
-        const type = outDir === 'mjs' ? 'module' : 'commonjs';
+        const type = params.outDir === 'mjs' ? 'module' : 'commonjs';
         fs.writeFile(
-            path.join(getDir(), outDir, 'package.json'),
+            path.join(params.dir, params.outDir, 'package.json'),
             JSON.stringify(
                 {
                     type,
@@ -22,9 +26,7 @@ const generate = async (outDir: (typeof transpiledOutDirs)[number]) =>
         );
     });
 
-const generatePackageJsonForTranspiledJavaScript = () => ({
-    mjs: () => generate('mjs'),
-    cjs: () => generate('cjs'),
-});
+const generatePackageJson = (param: Parameters<typeof generate>[number]) =>
+    generate(param);
 
-export default generatePackageJsonForTranspiledJavaScript;
+export default generatePackageJson;

@@ -12,13 +12,11 @@
     "scripts": {
         "postinstall": "pnpm build",
         "lint": "pnpm vite-node script/lint.ts",
-        "format": "prettier --ignore-path .gitignore --write src test",
-        "format-check": "prettier --ignore-path .gitignore --check src test",
+        "format": "prettier --ignore-path .gitignore --write src test script",
+        "format-check": "prettier --ignore-path .gitignore --check src test script",
         "build": "shx rm -rf build && tsc -p tsconfig.build.json && pnpm postbuild",
         "postbuild": "ts-add-js-extension add --dir=build && shx chmod +x build/bin.js",
-        "pretest": "cd test/dummy && shx rm cjs/package.json mjs/package.json",
-        "test": "pnpm pretest && vitest && pnpm posttest",
-        "posttest": "pnpm format"
+        "test": "vitest"
     },
     "dependencies": {
         "shx": "^0.3.4",

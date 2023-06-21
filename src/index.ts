@@ -1,19 +1,23 @@
-import generatePackageJsonForTranspiledJavaScript from './generate-package-json';
+import generatePackageJson from './generate-package-json';
 import { tallyTranspiledFiles } from './tally-transpiled-files';
 
 const main = () => {
-    const tallier = tallyTranspiledFiles();
+    const dir = 'build';
 
-    if (!tallier.isJsAndDts()) {
+    if (!tallyTranspiledFiles(dir)) {
         throw new Error(
             'mjs/cjs folder should contain JavaScrpt, Sourcemap and Type Definition files'
         );
     }
 
-    const generator = generatePackageJsonForTranspiledJavaScript();
-
-    generator.mjs();
-    generator.cjs();
+    generatePackageJson({
+        dir,
+        outDir: 'cjs',
+    });
+    generatePackageJson({
+        dir,
+        outDir: 'mjs',
+    });
 };
 
 export default main;

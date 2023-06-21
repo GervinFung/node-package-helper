@@ -4,7 +4,7 @@ const main = async () => {
     try {
         const eslint = new ESLint();
 
-        const results = await eslint.lintFiles(['src', 'test']);
+        const results = await eslint.lintFiles(['src', 'test', 'script']);
 
         const formatter = await eslint.loadFormatter('stylish');
 
