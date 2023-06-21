@@ -4,13 +4,13 @@ import getDir from './dir';
 
 type Files = ReadonlyArray<string>;
 
-const getFiles = ({
-    dir,
-}: Readonly<{
-    dir: string;
-}>): Files =>
-    fs.readdirSync(dir).flatMap((file) => {
-        const filePath = `${dir}/${file}`;
+const getFiles = (
+    params: Readonly<{
+        dir: string;
+    }>
+): Files =>
+    fs.readdirSync(params.dir).flatMap((file) => {
+        const filePath = path.join(params.dir, file);
         return !fs.statSync(filePath).isDirectory()
             ? filePath
             : getFiles({
@@ -28,30 +28,28 @@ const getBuild = <T extends string>(subDir: T) => {
     throw new Error(`${dir} is not a directory, originated from ${subDir}`);
 };
 
-namespace TallyTranspiledFiles {
-    export const transpiledOutDirs = ['mjs', 'cjs'] as const;
+const transpiledOutDirs = ['mjs', 'cjs'] as const;
 
-    export const tallyTranspiledFiles = () => {
-        const dir = getDir();
+const tallyTranspiledFiles = () => {
+    const dir = getDir();
 
-        return {
-            isJsAndDts: () => {
-                const [mjs, cjs] = transpiledOutDirs;
-                const [mjses, cjses] = [mjs, cjs].map((type) =>
-                    getBuild(type).map((file) =>
-                        file.replace(path.join(dir, type), '')
-                    )
-                );
-                return (mjses ?? []).every(
-                    (file, index) =>
-                        ((cjses ?? []).at(index) === file &&
-                            file.endsWith('.js')) ||
-                        file.endsWith('.js.map') ||
-                        file.endsWith('.d.ts')
-                );
-            },
-        };
+    return {
+        isJsAndDts: () => {
+            const [mjs, cjs] = transpiledOutDirs;
+            const [mjses, cjses] = [mjs, cjs].map((type) =>
+                getBuild(type).map((file) =>
+                    file.replace(path.join(dir, type), '')
+                )
+            );
+            return (mjses ?? []).every(
+                (file, index) =>
+                    ((cjses ?? []).at(index) === file &&
+                        file.endsWith('.js')) ||
+                    file.endsWith('.js.map') ||
+                    file.endsWith('.d.ts')
+            );
+        },
     };
-}
+};
 
-export default TallyTranspiledFiles;
+export { transpiledOutDirs, tallyTranspiledFiles };

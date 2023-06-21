@@ -1,6 +1,8 @@
+import path from 'path';
+
 const getDir = () =>
     JSON.parse(process.env.NODE_PACKAGE_HELPER ?? 'false') !== true
         ? 'build'
-        : 'test/dummy';
+        : path.join('test', 'dummy');
 
 export default getDir;

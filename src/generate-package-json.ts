@@ -1,14 +1,13 @@
 import fs from 'fs';
+import path from 'path';
 import getDir from './dir';
-import TallyTranspiledFiles from './tally-transpiled-files';
+import { transpiledOutDirs } from './tally-transpiled-files';
 
-const generate = async (
-    outDir: (typeof TallyTranspiledFiles)['transpiledOutDirs'][number]
-) =>
+const generate = async (outDir: (typeof transpiledOutDirs)[number]) =>
     new Promise<string | NodeJS.ErrnoException>((resolve, reject) => {
         const type = outDir === 'mjs' ? 'module' : 'commonjs';
         fs.writeFile(
-            `${getDir()}/${outDir}/package.json`,
+            path.join(getDir(), outDir, 'package.json'),
             JSON.stringify(
                 {
                     type,

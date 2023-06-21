@@ -1,8 +1,8 @@
 import generatePackageJsonForTranspiledJavaScript from './generate-package-json';
-import TallyTranspiledFiles from './tally-transpiled-files';
+import { tallyTranspiledFiles } from './tally-transpiled-files';
 
 const main = () => {
-    const tallier = TallyTranspiledFiles.tallyTranspiledFiles();
+    const tallier = tallyTranspiledFiles();
 
     if (!tallier.isJsAndDts()) {
         throw new Error(
