@@ -1,3 +1,7 @@
+## 0.1.5 (22 Jun 2023)
+
+-   (Fix) Update `ts-add-js-extension` so it can compile in Windows
+
 ## 0.1.4 (20 Jun 2023)
 
 -   (Fix) Include `bin` back as executable
