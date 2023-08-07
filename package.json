@@ -1,19 +1,19 @@
 {
     "name": "node-package-helper",
     "description": "My helper to ensure TypeScript transpiled files/folders are valid according to my preference",
-    "version": "0.1.5",
+    "version": "0.2.0",
     "license": "MIT",
     "type": "module",
     "main": "build/index.js",
-    "types": "build/index.d.ts",
     "bin": {
         "node-package-helper": "./build/bin.js"
     },
     "scripts": {
         "postinstall": "pnpm build",
-        "lint": "pnpm vite-node script/lint.ts",
-        "format": "prettier --ignore-path .gitignore --write src test script",
-        "format-check": "prettier --ignore-path .gitignore --check src test script",
+        "lint": "eslint . --ignore-path .gitignore --ext .ts --color",
+		"format": "pnpm prettier --ignore-path .gitignore **/*.{js,cjs,ts,json,md}",
+		"format-write": "pnpm format --write",
+		"format-check": "pnpm format --check",
         "build": "shx rm -rf build && tsc -p tsconfig.build.json && pnpm postbuild",
         "postbuild": "ts-add-js-extension add --dir=build && shx chmod +x build/bin.js",
         "test": "vitest"
@@ -24,14 +24,13 @@
         "typescript": "^5.0.4"
     },
     "devDependencies": {
-        "@poolofdeath20/eslint-config": "^0.1.0",
+        "@poolofdeath20/eslint-config": "^0.2.0",
         "@types/eslint": "^8.40.2",
         "@types/node": "^20.1.7",
         "@typescript-eslint/eslint-plugin": "^5.59.6",
         "@typescript-eslint/parser": "^5.59.6",
         "eslint": "^8.40.0",
         "prettier": "^2.8.8",
-        "vite-node": "^0.32.2",
         "vitest": "^0.31.0"
     }
 }

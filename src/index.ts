@@ -10,14 +10,19 @@ const main = () => {
         );
     }
 
-    generatePackageJson({
+    const cjs = generatePackageJson({
         dir,
         outDir: 'cjs',
     });
-    generatePackageJson({
+
+    console[typeof cjs ==='string' ? 'log':'error'](cjs)
+
+    const mjs = generatePackageJson({
         dir,
         outDir: 'mjs',
     });
+
+    console[typeof mjs ==='string' ? 'log':'error'](cjs)
 };
 
 export default main;
