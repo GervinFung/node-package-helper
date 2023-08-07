@@ -15,14 +15,14 @@ const main = () => {
         outDir: 'cjs',
     });
 
-    console[typeof cjs ==='string' ? 'log':'error'](cjs)
+    console[typeof cjs === 'string' ? 'log' : 'error'](cjs);
 
     const mjs = generatePackageJson({
         dir,
         outDir: 'mjs',
     });
 
-    console[typeof mjs ==='string' ? 'log':'error'](cjs)
+    console[typeof mjs === 'string' ? 'log' : 'error'](cjs);
 };
 
 export default main;

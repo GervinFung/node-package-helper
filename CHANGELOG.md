@@ -2,7 +2,6 @@
 
 -   (Feat) Added feedback when `package.json` is generated
 
-
 ## 0.1.5 (22 Jun 2023)
 
 -   (Fix) Update `ts-add-js-extension` so it can compile in Windows

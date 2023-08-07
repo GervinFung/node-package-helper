@@ -20,9 +20,9 @@ describe('tally transpiled files', () => {
     it.each(
         (() => {
             const sadCase = path.join('test', 'dummy', 'sad-case');
-            return fs
-                .readdirSync(sadCase)
-                .map((pathName) => path.join(sadCase, pathName));
+            return fs.readdirSync(sadCase).map((pathName) => {
+                return path.join(sadCase, pathName);
+            });
         })()
     )(
         'should return false as all JavaScript, Type Definition and Sourcemap files must exists in the same folder',
