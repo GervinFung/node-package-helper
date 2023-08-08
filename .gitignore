@@ -2,3 +2,4 @@ node_modules
 # production
 build
 test/dummy/happy-case/*js/package.json
+.prettierrc
