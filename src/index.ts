@@ -1,7 +1,7 @@
 import generatePackageJson from './generate-package-json';
 import { tallyTranspiledFiles } from './tally-transpiled-files';
 
-const main = () => {
+const main = async () => {
 	const dir = 'build';
 
 	if (!tallyTranspiledFiles(dir)) {
@@ -10,19 +10,19 @@ const main = () => {
 		);
 	}
 
-	const cjs = generatePackageJson({
+	const cjs = await generatePackageJson({
 		dir,
 		outDir: 'cjs',
 	});
 
 	console[typeof cjs === 'string' ? 'log' : 'error'](cjs);
 
-	const mjs = generatePackageJson({
+	const mjs = await generatePackageJson({
 		dir,
 		outDir: 'mjs',
 	});
 
-	console[typeof mjs === 'string' ? 'log' : 'error'](cjs);
+	console[typeof mjs === 'string' ? 'log' : 'error'](mjs);
 };
 
 export default main;

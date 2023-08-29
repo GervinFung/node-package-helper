@@ -1,3 +1,7 @@
+## 0.2.1 (29 Aug 2023)
+
+-   (Fix) Await for result before logging at `main` function
+
 ## 0.2.0 (7 Aug 2023)
 
 -   (Feat) Added feedback when `package.json` is generated
