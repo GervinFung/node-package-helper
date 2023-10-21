@@ -19,18 +19,18 @@
 	},
 	"dependencies": {
 		"shx": "^0.3.4",
-		"ts-add-js-extension": "^1.5.8",
+		"ts-add-js-extension": "^1.6.0",
 		"typescript": "^5.2.2"
 	},
 	"devDependencies": {
 		"@poolofdeath20/eslint-config": "^0.2.1",
 		"@poolofdeath20/prettier-config-generator": "^0.0.1",
-		"@types/eslint": "^8.44.2",
-		"@types/node": "^20.5.7",
+		"@types/eslint": "^8.44.6",
+		"@types/node": "^20.8.7",
 		"@typescript-eslint/eslint-plugin": "^5.62.0",
 		"@typescript-eslint/parser": "^5.62.0",
-		"eslint": "^8.48.0",
-		"prettier": "^3.0.2",
+		"eslint": "^8.52.0",
+		"prettier": "^3.0.3",
 		"vitest": "^0.31.4"
 	}
 }
