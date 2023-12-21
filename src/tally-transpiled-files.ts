@@ -14,7 +14,7 @@ const getFiles = (
 			? filePath
 			: getFiles({
 					dir: filePath,
-			  });
+				});
 	});
 };
 
