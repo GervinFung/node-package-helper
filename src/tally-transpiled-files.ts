@@ -35,26 +35,38 @@ const getBuild = <T extends string>(
 
 const transpiledOutDirs = ['mjs', 'cjs'] as const;
 
+const tallyFiles = (type: 'js' | 'jsx') => {
+	return (jses: ReadonlyArray<string>) => {
+		const hasJs = jses.filter((file) => {
+			return file.endsWith(`.${type}`);
+		});
+		const hasDts = jses.filter((file) => {
+			return file.endsWith('.d.ts');
+		});
+		const hasSourceMap = jses.filter((file) => {
+			return file.endsWith(`.${type}.map`);
+		});
+
+		return (
+			hasJs.length &&
+			hasJs.length * 3 ===
+				hasJs.length + hasDts.length + hasSourceMap.length
+		);
+	};
+};
+
+const tallyJsFiles = tallyFiles('js');
+
+const tallyJsxFiles = tallyFiles('jsx');
+
 const tallyTranspiledFiles = (dir: string) => {
-	const [mjses] = transpiledOutDirs.map((type) => {
+	const files = transpiledOutDirs.map((type) => {
 		return getBuild({ dir, subDir: type }).map((file) => {
 			return file.replace(path.join(dir, type), '');
 		});
 	});
 
-	const hasJs = (mjses ?? []).filter((file) => {
-		return file.endsWith('.js');
-	});
-	const hasDts = (mjses ?? []).filter((file) => {
-		return file.endsWith('.d.ts');
-	});
-	const hasSourceMap = (mjses ?? []).filter((file) => {
-		return file.endsWith('.js.map');
-	});
-
-	return (
-		hasJs.length * 3 === hasJs.length + hasDts.length + hasSourceMap.length
-	);
+	return files.every(tallyJsFiles) || files.every(tallyJsxFiles);
 };
 
 export { transpiledOutDirs, tallyTranspiledFiles };
