@@ -1,5 +1,5 @@
 {
 	"extends": ["@poolofdeath20/tsconfig/node"],
 	"include": ["**/*.ts"],
-	"exclude": ["node_modules", "test/dummy/**"],
+	"exclude": ["node_modules", "test/dummy/**"]
 }
