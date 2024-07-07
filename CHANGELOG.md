@@ -1,3 +1,7 @@
+## 0.2.2 (7 Jul 2024)
+
+-   (Fix) move `@poolofdeath20/tsconfig` as dependency due to `postinstall` command
+
 ## 0.2.1 (29 Aug 2023)
 
 -   (Fix) Await for result before logging at `main` function
