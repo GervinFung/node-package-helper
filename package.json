@@ -18,6 +18,7 @@
 		"test": "vitest"
 	},
 	"dependencies": {
+		"@poolofdeath20/tsconfig": "^0.0.0",
 		"shx": "^0.3.4",
 		"ts-add-js-extension": "^1.6.4",
 		"typescript": "^5.5.3"
@@ -25,7 +26,6 @@
 	"devDependencies": {
 		"@poolofdeath20/eslint-config": "^0.3.2",
 		"@poolofdeath20/prettier-config-generator": "^0.0.1",
-		"@poolofdeath20/tsconfig": "^0.0.0",
 		"@types/node": "^20.14.9",
 		"@typescript-eslint/eslint-plugin": "^7.15.0",
 		"@typescript-eslint/parser": "^7.15.0",
