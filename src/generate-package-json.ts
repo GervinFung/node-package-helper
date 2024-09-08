@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+
 import { transpiledOutDirs } from './tally-transpiled-files';
 
 const generate = async (

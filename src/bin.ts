@@ -1,3 +1,4 @@
 #!/usr/bin/env node
-import main from './';
-main();
+import main from '.';
+
+void main();
