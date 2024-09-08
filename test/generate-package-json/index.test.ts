@@ -1,5 +1,7 @@
 import path from 'path';
+
 import { describe, expect, it } from 'vitest';
+
 import generatePackageJson from '../../src/generate-package-json';
 
 describe('generate package.json for commonjs and module', () => {
