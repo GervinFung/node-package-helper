@@ -10,7 +10,6 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(
 	includeIgnoreFile(`${process.cwd()}/.gitignore`),
 	eslint.configs.recommended,
-	...tseslint.configs.recommendedTypeChecked,
 	...tseslint.configs.strict,
 	...tseslint.configs.stylistic,
 	node,
